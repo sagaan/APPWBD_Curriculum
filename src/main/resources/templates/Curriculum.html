@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/Stylo.css" th:href="@{/css/Stylo.css}">
+</head>
+<body>
+    <div id="Info" class="Divisiones">
+        <img th:src="${cv.imagen}" id="foto">
+        <div th:text="${cv.nombre + ' ' + cv.apellidoMaterno + ' ' + cv.apellidoPaterno}" class="IBasic"></div>
+        <div th:text="'Edad: ' + ${cv.edad}" class="IBasic"></div>
+        <div th:text="'Direccion: ' + ${cv.direccion}" class="IBasic"></div>
+        <div th:text="'Correo: ' + ${cv.email}" class="IBasic"></div>
+        <div th:text="'Telefono: ' + ${cv.telefono}" class="IBasic"></div>
+    </div>
+
+    <div id="Estudios" class="Divisiones">
+        <table>
+            <thead >
+                <tr class="cabeza">
+                    <th>Escuela</th>
+                    <th>Grado</th>
+                    <th>Año Inicio</th>
+                    <th>Año Fin</th>
+                </tr>
+            </thead>
+            <tbody th:each="Estudios : ${cv.getEstudiosList()}">
+                <tr>
+                    <th th:text="${Estudios.getEscuela()}"></th>
+                    <th th:text="${Estudios.getGrado()}"></th>
+                    <th th:text="${Estudios.getAnyoInicio()}"></th>
+                    <th th:text="${Estudios.getAnyoFin()}"></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="Conocimientos" class="Divisiones">
+        <table>
+            <thead>
+            <tr class="cabeza">
+                <th>
+                    Conocimientos
+                </th>
+            </tr>
+            </thead>
+            <tbody th:each="Conocimientos : ${cv.getConocimientosList()}">
+            <tr>
+                <th th:text="${Conocimientos}"></th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="Experiencia" class="Divisiones">
+        <table>
+            <thead>
+            <tr class="cabeza">
+                <th>Empresa</th>
+                <th>Puesto</th>
+                <th>Superior</th>
+                <th>E-Mail</th>
+                <th>Telefono</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Salida</th>
+                <th>Razon de Salida</th>
+            </tr>
+            </thead>
+            <tbody th:each="Experiencia : ${cv.getExperienciaList()}">
+                <tr>
+                    <th th:text="${Experiencia.getEmpresa()}"></th>
+                    <th th:text="${Experiencia.getPuesto()}"></th>
+                    <th th:text="${Experiencia.getSuperior()}"></th>
+                    <th th:text="${Experiencia.getEmail()}"></th>
+                    <th th:text="${Experiencia.getTelefono()}"></th>
+                    <th th:text="${Experiencia.getInicio()}"></th>
+                    <th th:text="${Experiencia.getFin()}"></th>
+                    <th th:text="${Experiencia.getRazonSalida()}"></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
