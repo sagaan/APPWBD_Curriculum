@@ -106,7 +106,7 @@ public class CVController {
 
         model.addAttribute("cv",cv);
 
-        return "curriculum";
+        return "Curriculum";
     }
 
 }
